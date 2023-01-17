@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AC_Hamburguesa
 {
-    internal class FileAccessHelper
+    public class FileAccessHelper
     {
         public static string GetLocalFilePath(string filename)
         {

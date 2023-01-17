@@ -8,7 +8,7 @@ public partial class ACBurgerListPage : ContentPage
 	public ACBurgerListPage()
 	{
         InitializeComponent();
-        LoadData();
+        BindingContext = this;
     }
 
     protected override void OnAppearing()
@@ -23,9 +23,12 @@ public partial class ACBurgerListPage : ContentPage
         burger = App.BurgerRepo.GetAllBurgers();
         burgerList.ItemsSource = burger;
     }
-    async void OnItemAdded(object sender, EventArgs e)
+    public void OnItemAdded(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(ACBurgerItemPage));
-        base.OnAppearing();
+        Shell.Current.GoToAsync(nameof(ACBurgerItemPage), true, new Dictionary<string, object>
+        {
+            ["Item"] = new ACBurger()
+        });
+        //base.OnAppearing();
     }
 }

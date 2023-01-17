@@ -5,7 +5,10 @@
              xmlns:models="clr-namespace:AC_Hamburguesa.ACModels"
              Title="ACBurgerListPage">
     <Grid RowDefinitions="*,Auto">
-        <CollectionView x:Name="burgerList">
+        <CollectionView 
+            x:Name="burgerList"
+            SelectionMode="Single"
+            SelectionChanged="CollectionView_SelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:ACBurger">
                     <Grid>
