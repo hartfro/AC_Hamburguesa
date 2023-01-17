@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AC_Hamburguesa.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AC_Hamburguesa.ACViews"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Burger Items"
+        ContentTemplate="{DataTemplate local:ACBurgerListPage}"
+        Route="BurgerList" />
+
+</Shell>
