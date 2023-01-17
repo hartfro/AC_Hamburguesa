@@ -11,7 +11,7 @@
             <Label Text="Descripción" />
             <Entry x:Name="ACdescB" Text="{Binding Description}" />
             <Label Text="¿Con queso extra?" />
-            <CheckBox x:Name="check" CheckedChanged="OnCheckBoxCheckedChanged" />
+            <CheckBox x:Name="ACcheck" IsChecked="{Binding WithExtraCheese}"/>
             <Button Text="Guardar" Clicked="OnSaveClicked" />
             <Button Text="Cancelar" Clicked="OnCancelClicked" />
         </VerticalStackLayout>

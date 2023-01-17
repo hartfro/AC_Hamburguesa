@@ -10,10 +10,18 @@ public partial class ACBurgerListPage : ContentPage
         InitializeComponent();
         BindingContext = this;
     }
-
-    protected override void OnAppearing()
+    public void OnItemAdded(object sender, EventArgs e)
     {
-        LoadData();
+        Shell.Current.GoToAsync(nameof(ACBurgerItemPage), true, new Dictionary<string, object>
+        {
+            ["Item"] = new ACBurger()
+        });
+        //base.OnAppearing();
+    }
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        List<ACBurger> burger = App.BurgerRepo.GetAllBurgers();
+        burgerList.ItemsSource = burger;
     }
 
     private void LoadData()
@@ -23,12 +31,13 @@ public partial class ACBurgerListPage : ContentPage
         burger = App.BurgerRepo.GetAllBurgers();
         burgerList.ItemsSource = burger;
     }
-    public void OnItemAdded(object sender, EventArgs e)
+    protected override void OnAppearing()
     {
-        Shell.Current.GoToAsync(nameof(ACBurgerItemPage), true, new Dictionary<string, object>
-        {
-            ["Item"] = new ACBurger()
-        });
-        //base.OnAppearing();
+        LoadData();
+    }
+
+    private void burgerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
     }
 }

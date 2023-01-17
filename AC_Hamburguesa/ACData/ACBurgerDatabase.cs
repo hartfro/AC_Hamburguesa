@@ -27,14 +27,30 @@ namespace AC_Hamburguesa.ACData
         public int AddNewBurger(ACBurger burger)
         {
             Init();
+            /*
             int result = conn.Insert(burger);
-            return result;
+            return result;*/
+
+            if(burger.Id != 0)
+            {
+                return conn.Update(burger);
+            }
+            else
+            {
+                return conn.Insert(burger);
+            }
         }
         public List<ACBurger> GetAllBurgers()
         {
             Init();
             List<ACBurger> burgers = conn.Table<ACBurger>().ToList();
             return burgers;
+        }
+
+        public int DeleteItem(ACBurger item)
+        {
+            Init();
+            return conn.Delete(item);
         }
     }
 
