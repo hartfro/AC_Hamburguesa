@@ -30,7 +30,7 @@ namespace AC_Hamburguesa.ACSearchHandlers
         {
             base.OnItemSelected(item);
             var navParam = new Dictionary<string, object>();
-            navParam.Add("ACBurgerDetail", item);
+            navParam.Add("BurgerDetail", item);
             if (!string.IsNullOrWhiteSpace(NavigationRoute))
             {
                 await Shell.Current.GoToAsync(NavigationRoute, navParam);

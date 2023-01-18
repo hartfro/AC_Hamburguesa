@@ -16,5 +16,7 @@ namespace AC_Hamburguesa.ACModels
         public string Name { get; set; }
         public string Description { get; set; }
         public bool WithExtraCheese { get; set; }
+        [Ignore]
+        public string ACBurgerPlusDesc => $"{Name}: {Description}";
     }
 }

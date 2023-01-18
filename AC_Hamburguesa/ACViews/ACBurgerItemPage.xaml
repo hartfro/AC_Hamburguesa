@@ -4,16 +4,37 @@
              xmlns:models="clr-namespace:AC_Hamburguesa.ACModels"
              x:Class="AC_Hamburguesa.ACViews.ACBurgerItemPage"
              Title="ACBurgerItemPage">
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="StartAndExpand">
-            <Label Text="Nombre" />
-            <Entry x:Name="ACnameB" Text="{Binding Name}" />
-            <Label Text="Descripción" />
-            <Entry x:Name="ACdescB" Text="{Binding Description}" />
-            <Label Text="¿Con queso extra?" />
-            <CheckBox x:Name="ACcheck" IsChecked="{Binding WithExtraCheese}"/>
-            <Button Text="Guardar" Clicked="OnSaveClicked" />
-            <Button Text="Cancelar" Clicked="OnCancelClicked" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="SlateGray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="10" Spacing="15">
+        <VerticalStackLayout>
+            <Label Text="Name"  />
+            <Entry Text="{Binding BurgerDetail.Name}" Placeholder="Name" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
         </VerticalStackLayout>
-    </ScrollView>
+
+
+        <VerticalStackLayout>
+            <Label Text="Description" />
+            <Entry  Text="{Binding BurgerDetail.Description}" Placeholder="Description" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout>
+            <Label Text="With Extra Cheese?" />
+            <Entry Text="{Binding BurgerDetail.WithExtraCheese}" Placeholder="Yes/No" />
+            <BoxView HeightRequest="0.8" Color="Gray" />
+        </VerticalStackLayout>
+
+
+        <Button Text="Save" Command="{Binding ACBurgerItemPage}"/>
+    </StackLayout>
+
 </ContentPage>

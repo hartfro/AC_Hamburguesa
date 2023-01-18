@@ -1,4 +1,6 @@
-﻿using AC_Hamburguesa.ACData;
+﻿using AC_Hamburguesa.ACServices;
+using AC_Hamburguesa.ACViewModels;
+using AC_Hamburguesa.ACViews;
 
 namespace AC_Hamburguesa;
 
@@ -15,9 +17,19 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		string dbPath = FileAccessHelper.GetLocalFilePath("burger.db3");
-		builder.Services.AddSingleton<ACBurgerDatabase>(s => ActivatorUtilities.CreateInstance<ACBurgerDatabase>(s,dbPath));
+        // Data
+        builder.Services.AddSingleton<ACIBurgerServices, ACBurgerServices>();
 
-		return builder.Build();
+        // Views
+        builder.Services.AddSingleton<ACBurgerListPage>();
+        builder.Services.AddTransient<ACBurgerItemPage>();
+
+        // ViewModels
+        builder.Services.AddSingleton<ACBurgerListPageViewModel>();
+        builder.Services.AddTransient<ACBurgerItemViewModel>();
+
+
+        return builder.Build();
+
 	}
 }

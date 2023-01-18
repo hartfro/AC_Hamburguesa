@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AC_Hamburguesa.ACViews.ACBurgerListPage"
              xmlns:models="clr-namespace:AC_Hamburguesa.ACModels"
+             xmlns:searchHandlers="clr-namespace:AC_Hamburguesa.ACSearchHandlers"
+             xmlns:viewModels="clr-namespace:AC_Hamburguesa.ACViewModels"
+             x:DataType="viewModels:ACBurgerListPageViewModel"
+             x:Class="AC_Hamburguesa.ACViews.ACBurgerListPage"
              Title="ACBurgerListPage">
-    <Grid RowDefinitions="*,Auto">
-        <CollectionView 
-            x:Name="burgerList"
-            SelectionMode="Single"
-            >
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:ACBurger">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="{Binding Id}" />
-                        <Label Grid.Column="1" Text="{Binding Name}" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button Grid.Row="1" Text="Añadir nuevo registro"
-Clicked="OnItemAdded"
- Margin="20"/>
-    </Grid>
+    <ScrollView>
+        <StackLayout Margin="10" VerticalOptions="Fill">
+            <Label  Text="Burger List" FontSize="28"/>
+            <Button Text="Add Burger" Command="{Binding AddUpdateACBurgerCommand}" HorizontalOptions="End" />
+            <CollectionView VerticalOptions="Start" ItemsSource="{Binding ACBurgers}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ACBurger">
+                        <Frame Margin="10" Padding="10">
+                            <StackLayout >
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                    <Label Text="{Binding Description}" FontSize="18" FontAttributes="Bold" />
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding WithExtraCheese}" />
+                            </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ACBurgerListPageViewModel}},Path=DisplayActionCommand}"
+                                                          CommandParameter="{Binding .}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
