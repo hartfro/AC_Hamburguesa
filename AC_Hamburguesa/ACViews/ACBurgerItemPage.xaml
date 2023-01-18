@@ -29,12 +29,13 @@
 
         <VerticalStackLayout>
             <Label Text="With Extra Cheese?" />
-            <Entry Text="{Binding BurgerDetail.WithExtraCheese}" Placeholder="Yes/No" />
+            <CheckBox x:Name="check"
+                      IsChecked="{Binding BurgerDetail.WithExtraCheese}"/>
             <BoxView HeightRequest="0.8" Color="Gray" />
         </VerticalStackLayout>
 
 
-        <Button Text="Save" Command="{Binding ACBurgerItemPage}"/>
+        <Button Text="Save" Command="{Binding AddUpdateACBurgerCommand}"/>
     </StackLayout>
 
 </ContentPage>
