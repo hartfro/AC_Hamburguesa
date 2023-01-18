@@ -16,11 +16,11 @@
                         <Frame Margin="10" Padding="10">
                             <StackLayout >
                                 <HorizontalStackLayout Spacing="10">
-                                    <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
-                                    <Label Text="{Binding Description}" FontSize="18" FontAttributes="Bold" />
+                                    <Label x:Name="ACnameList" Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                                    <Label x:Name="ACdescList" Text="{Binding Description}" FontSize="18" FontAttributes="Bold" />
                                 </HorizontalStackLayout>
-                                <Label x:Name="CheeseConfirmation" Text="With Extra Cheese: "/>
-                                <Label x:Name="CheeseConfirmationDB" Text="{Binding WithExtraCheese}" />
+                                <Label x:Name="ACCheeseConfirmation" Text="With Extra Cheese: "/>
+                                <Label x:Name="ACCheeseConfirmationList" Text="{Binding WithExtraCheese}" />
                             </StackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ACBurgerListPageViewModel}},Path=DisplayActionCommand}"
