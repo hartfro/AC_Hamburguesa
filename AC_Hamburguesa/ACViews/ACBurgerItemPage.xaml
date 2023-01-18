@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:AC_Hamburguesa.ACModels"
              x:Class="AC_Hamburguesa.ACViews.ACBurgerItemPage"
-             Title="ACBurgerItemPage">
+             Title="Build a Burger!">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label">
@@ -15,14 +15,14 @@
     <StackLayout Margin="10" Spacing="15">
         <VerticalStackLayout>
             <Label Text="Name"  />
-            <Entry Text="{Binding BurgerDetail.Name}" Placeholder="Name" />
+            <Entry Text="{Binding BurgerDetail.Name}" Placeholder="Add the name of the burger" />
             <BoxView HeightRequest="0.8" Color="Gray" />
         </VerticalStackLayout>
 
 
         <VerticalStackLayout>
             <Label Text="Description" />
-            <Entry  Text="{Binding BurgerDetail.Description}" Placeholder="Description" />
+            <Entry  Text="{Binding BurgerDetail.Description}" Placeholder="Add the description of the burger" />
             <BoxView HeightRequest="0.8" Color="Gray" />
         </VerticalStackLayout>
 

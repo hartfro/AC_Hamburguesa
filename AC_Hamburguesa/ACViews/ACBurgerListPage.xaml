@@ -6,11 +6,10 @@
              xmlns:viewModels="clr-namespace:AC_Hamburguesa.ACViewModels"
              x:DataType="viewModels:ACBurgerListPageViewModel"
              x:Class="AC_Hamburguesa.ACViews.ACBurgerListPage"
-             Title="ACBurgerListPage">
+             Title="Welcome to Burger App!">
     <ScrollView>
         <StackLayout Margin="10" VerticalOptions="Fill">
-            <Label  Text="Burger List" FontSize="28"/>
-            <Button Text="Add Burger" Command="{Binding AddUpdateACBurgerCommand}" HorizontalOptions="End" />
+            <Label  Text="Burger List" FontSize="28" HorizontalOptions="CenterAndExpand"/>
             <CollectionView VerticalOptions="Start" ItemsSource="{Binding ACBurgers}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:ACBurger">
@@ -20,7 +19,8 @@
                                     <Label Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
                                     <Label Text="{Binding Description}" FontSize="18" FontAttributes="Bold" />
                                 </HorizontalStackLayout>
-                                <Label x:Name="Cheese" Text="{Binding WithExtraCheese}" />
+                                <Label x:Name="CheeseConfirmation" Text="With Extra Cheese: "/>
+                                <Label x:Name="CheeseConfirmationDB" Text="{Binding WithExtraCheese}" />
                             </StackLayout>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:ACBurgerListPageViewModel}},Path=DisplayActionCommand}"
@@ -31,6 +31,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Text="Add Burger" Command="{Binding AddUpdateACBurgerCommand}" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
